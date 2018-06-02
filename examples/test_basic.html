@@ -11,6 +11,7 @@
 
 <script src="js/demo.js"></script>
 <script src="js/libs/three.min.js"></script>
+<script src="js/vr/WebVR.js"></script>
 <script src="js/controls/OrbitControls.js"></script>
 <script src="../build/oimo.js"></script>
 
@@ -54,7 +55,9 @@
     var infos;
 
     init();
-    loop();
+    renderer.vr.enabled= true;
+    document.body.appendChild( WEBVR.createButton( renderer ) );
+    renderer.animate(loop);
 
     function init() {
 
@@ -135,7 +138,6 @@
 
         updateOimoPhysics();
         renderer.render( scene, camera );
-        requestAnimationFrame( loop );
 
     }
 
